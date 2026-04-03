@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feuerbilder | Thomas Prautsch</title>
+    <link rel="stylesheet" href="Styles.css">
+</head>
+<body>
+
+    <header class="header">
+        <a href="index.html#home" class="logo">Thomas Prautsch</a>
+        <div class="hamburger">
+            <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+        </div>
+        <nav class="nav-menu">
+            <ul class="nav-list">
+                <li class="nav-item"><a href="index.html#home" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="index.html#galerie" class="nav-link">Galerie</a></li>
+                <li class="nav-item"><a href="index.html#vita" class="nav-link">Vita</a></li>
+                <li class="nav-item"><a href="index.html#kontakt" class="nav-link">Kontakt</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="section">
+        <div class="container">
+            <h1 class="category-title">Feuerbilder</h1>
+            
+            <div class="works-grid">
+                
+                <div class="work-item">
+                    <div class="work-img-container">
+                        <img src="bilder/highlands_l.jpg" alt="Highlands" class="gallery-img">
+                    </div>
+                    <div class="work-info">
+                        <h3>Highlands</h3>
+                        <p>Öl auf Papier (auf MDF), je 9 x 12,5 cm, 2011</p>
+                    </div>
+                </div>
+
+                <div class="work-item">
+                    <div class="work-img-container">
+                        <img src="bilder/StadtTusche.jpg" alt="Stadt SW (Nr.1-20)" class="gallery-img">
+                    </div>
+                    <div class="work-info">
+                        <h3>Stadt SW (Nr.1-20)</h3>
+                        <p>Tusche auf Papier, je 7,4 x 10,5 cm, 2000</p>
+                    </div>
+                </div>
+
+                <div class="work-item">
+                    <div class="work-img-container">
+                        <img src="bilder/Stadt1.jpg" alt="Stadt (Hafen, Nr.1-5)" class="gallery-img">
+                    </div>
+                    <div class="work-info">
+                        <h3>Stadt (Hafen, Nr.1-5)</h3>
+                        <p>Öl auf Papier, je 25 x 18 cm, 2000</p>
+                    </div>
+                </div>
+
+                <div class="work-item">
+                    <div class="work-img-container">
+                        <img src="bilder/Land2.jpg" alt="Landschaft (Nr.8-17)" class="gallery-img">
+                    </div>
+                    <div class="work-info">
+                        <h3>Landschaft (Nr.8-17)</h3>
+                        <p>Öl auf Papier, je 21 x 15 cm, 2001</p>
+                    </div>
+                </div>
+
+                <div class="work-item">
+                    <div class="work-img-container">
+                        <img src="bilder/Land3.jpg" alt="Landschaft (Nr.1-6)" class="gallery-img">
+                    </div>
+                    <div class="work-info">
+                        <h3>Landschaft (Nr.1-6)</h3>
+                        <p>Öl auf Papier, je 21 x 15 cm, 2000</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="bottom-nav">
+                <hr>
+                <h3>Weitere Kategorien</h3>
+                <div class="btn-group">
+                    <a href="feuerbilder.html" class="contact-btn">Feuerbilder</a>
+                    <a href="landschaften.html" class="contact-btn">Landschaften</a>
+                    <a href="stadtansichten.html" class="contact-btn">Stadtansichten</a>
+                    <a href="stadtlichter.html" class="contact-btn">Stadtlichter</a>
+                    <a href="treppenbilder.html" class="contact-btn">Treppenbilder</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div id="lightbox" class="lightbox">
+        <span class="close">&times;</span>
+        <span class="prev">&#10094;</span> <img class="lightbox-content" id="lightbox-img">
+        <span class="next">&#10095;</span> <div id="caption"></div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2026 Thomas Prautsch | <a href="impressum.html">Impressum</a></p>
+    </footer>
+
+    <script src="Script.js"></script>
+</body>
+</html>
