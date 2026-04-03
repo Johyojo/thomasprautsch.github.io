@@ -148,16 +148,35 @@ h1, h2 {
 }
 
 /* --- 6. KATEGORIE-SEITEN-GRID (Stadtansichten etc. - Ohne Blur) --- */
+/* --- Masonry Layout (Spalten unabhängig voneinander) --- */
 .works-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 40px;
-    margin-top: 2rem;
+    /* Definiert die Anzahl der Spalten */
+    column-count: 3; 
+    /* Abstand zwischen den Spalten */
+    column-gap: 30px; 
+    width: 100%;
 }
 
 .work-item {
-    display: flex;
-    flex-direction: column;
+    /* Wichtig: Verhindert, dass ein Element zwischen zwei Spalten zerrissen wird */
+    break-inside: avoid; 
+    display: inline-block; /* Nötig für die korrekte Spaltenberechnung */
+    width: 100%;
+    margin-bottom: 40px; /* Abstand nach unten zum nächsten Bild */
+}
+
+/* Anpassung für Tablets (2 Spalten) */
+@media (max-width: 900px) {
+    .works-grid {
+        column-count: 2;
+    }
+}
+
+/* Anpassung für Handys (1 Spalte) */
+@media (max-width: 600px) {
+    .works-grid {
+        column-count: 1;
+    }
 }
 
 .work-img-container {
