@@ -4,7 +4,7 @@
     --bg-color: #fff;
     --bg-light: #f4f4f4;
     --text-color: #444;
-    --nav-bg: #ffffff;
+    --nav-bg: #ffffffa4;
     --accent-color: #888;
 }
 
@@ -23,6 +23,8 @@ html {
 /* --- 2. HEADER & NAVIGATION --- */
 .header {
     background-color: var(--nav-bg);
+    backdrop-filter: blur(50px);
+    -webkit-backdrop-filter: blur(50px);
     border-bottom: 1px solid #ddd;
     position: fixed; 
     width: 100%;
@@ -62,8 +64,19 @@ html {
 .nav-link:hover {
     color: var(--accent-color);
 }
+/* --- Wilkommen Seite --- */
+.welcome-image-container {
+    margin-top: 30px;
+    text-align: center;
+}
 
-/* --- 3. BURGER MENÜ (Mobile) --- */
+.welcome-img {
+    max-width: 100%; /* Verhindert, dass das Bild breiter als der Bildschirm ist */
+    height: auto;
+    border-radius: 4px; /* Passt zu deinen Buttons */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1); /* Eleganter Schatten */
+}
+/* --- BURGER MENÜ (Mobile) --- */
 .hamburger {
     display: none;
     cursor: pointer;
@@ -212,8 +225,91 @@ h1, h2 {
     color: #666;
     font-style: italic;
 }
+/* --- Vita, Preise, Ausstellungen --- */
+.vita-grid {
+    display: grid;
+    /* Macht 2 Spalten auf dem PC. Auf kleinen Bildschirmen wird es automatisch 1 Spalte */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-bottom: 40px;
+}
 
-/* --- 7. KONTAKT BEREICH (Modern) --- */
+/* Die abgerundeten Boxen */
+.info-box {
+    background-color: #f9f9f9; /* Helles Grau für Kontrast */
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease;
+}
+
+.info-box:hover {
+    transform: translateY(-5px); /* Kleiner Hover-Effekt für die Boxen */
+}
+
+.info-box h3 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--accent-color);
+    padding-bottom: 10px;
+    display: inline-block;
+}
+
+/* Listen ohne Standard-Punkte styling */
+.clean-list {
+    list-style-type: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+.clean-list li {
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+.highlight-text {
+    margin-top: 25px;
+    font-style: italic;
+    color: #555;
+}
+
+/* --- AUSSTELLUNGEN AUFKLAPP-MENÜ --- */
+.ausstellungen-wrapper {
+    text-align: center; /* Zentriert den Button */
+    margin-top: 20px;
+}
+
+.ausstellungen-accordion {
+    text-align: left; /* Text innen bleibt linksbündig */
+    background-color: #fff;
+    border-radius: 12px;
+}
+
+/* Versteckt das Standard-Dreieck des Browsers im Summary */
+.ausstellungen-accordion summary::-webkit-details-marker {
+    display: none;
+}
+.ausstellungen-accordion summary {
+    list-style: none; /* Für Firefox etc. */
+    cursor: pointer;
+    /* Wir nutzen hier einfach deine .contact-btn Klasse im HTML, 
+       damit der Button exakt so aussieht wie deine anderen! */
+}
+
+.accordion-content {
+    margin-top: 20px;
+    padding: 30px;
+    background-color: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    max-height: 400px; /* Begrenzt die Höhe */
+    overflow-y: auto;  /* Macht die Liste scrollbar, wenn sie zu lang ist! */
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.05);
+}
+
+/* --- 7. KONTAKT BEREICH --- */
 .contact-wrapper {
     display: flex;
     flex-wrap: wrap;
@@ -347,7 +443,12 @@ h1, h2 {
     top: 0; 
     width: 100%; 
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.95);
+    background-color: rgb(255, 255, 255);
+
+/* 2. Der Blur-Effekt für alles, was hinter der Lightbox liegt */
+    backdrop-filter: blur(50px);
+    -webkit-backdrop-filter: blur(50px); /* Für Safari-Unterstützung */
+
     /* Flexbox sorgt für die Zentrierung des Inhalts */
     align-items: center;
     justify-content: center;
@@ -378,7 +479,7 @@ h1, h2 {
     position: absolute; 
     top: 20px; 
     right: 30px;
-    color: white; 
+    color: rgb(0, 0, 0); 
     font-size: 40px; 
     cursor: pointer;
     z-index: 3010;
@@ -393,7 +494,7 @@ h1, h2 {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    color: white;
+    color: rgb(0, 0, 0);
     font-size: 50px;
     padding: 20px;
     cursor: pointer;
@@ -412,7 +513,7 @@ h1, h2 {
 
 #caption {
     margin-top: 20px; /* Abstand zum Bild oben */
-    color: #ccc;
+    color: #1b1b1b;
     font-size: 1.1rem;
     text-align: center;
     max-width: 80%;
