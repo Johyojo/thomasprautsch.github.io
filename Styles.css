@@ -238,9 +238,17 @@ h1, h2 {
     gap: 15px;
 }
 
+/* --- NORMALER CONTACT-BTN (Angepasst an die Höhe des ersten Buttons) --- */
 .contact-btn {
-    display: inline-block;
-    padding: 12px 20px;
+    display: inline-flex;         /* Gleicher Display-Typ */
+    align-items: center;          /* Text vertikal zentrieren */
+    justify-content: center;      /* Text horizontal zentrieren */
+    vertical-align: middle;
+    
+    height: 45px;                 /* EXAKT dieselbe feste Höhe wie dein erster Button */
+    padding: 0 20px;              /* EXAKT dasselbe Padding */
+    box-sizing: border-box;       /* WICHTIG: Damit die 45px inkl. Border gelten */
+    
     background-color: white;
     color: var(--text-color);
     border: 1px solid #ccc;
@@ -248,12 +256,15 @@ h1, h2 {
     text-decoration: none;
     transition: all 0.3s ease;
     text-align: center;
+    cursor: pointer;
 }
 
+/* Der normale Hover-Effekt für die anderen Buttons */
 .contact-btn:hover {
     background-color: var(--primary-color);
     color: white;
-    transform: translateY(-3px);
+    /* Der kleine Versatz nach oben, passend zum Regenbogen-Button */
+    transform: translateY(-2px); 
 }
 
 /* Der "Alle Anzeigen"-Button mit additiven, fröhlichen Übergängen */
