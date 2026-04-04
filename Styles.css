@@ -517,3 +517,47 @@ h1, h2, h3 {
     .hamburger.active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
     .hamburger.active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
 }
+
+/* ==========================================================================
+   OPTIMIERTE LIGHTBOX NAVIGATION FÜR MOBILE
+   ========================================================================== */
+
+@media (max-width: 900px) { /* Deckt Handys und die meisten Tablets ab */
+    
+    .prev, .next {
+        /* Hebt die vertikale Zentrierung auf */
+        top: auto;
+        bottom: 20px;
+        transform: none;
+        
+        /* Macht die Klickfläche etwas kompakter für die untere Leiste */
+        font-size: 3rem; 
+        padding: 15px;
+        background-color: rgba(255, 255, 255, 0.5); /* Optional: bessere Sichtbarkeit */
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .prev {
+        left: 20%; /* Positioniert den Pfeil links unten */
+    }
+
+    .next {
+        right: 20%; /* Positioniert den Pfeil rechts unten */
+    }
+
+    /* Verhindert das Springen beim Hover auf Touch-Geräten */
+    .prev:hover, .next:hover {
+        transform: scale(1.1);
+    }
+
+    /* Platz für die Beschriftung schaffen, damit sie nicht von den Pfeilen verdeckt wird */
+    #caption {
+        margin-bottom: 80px; 
+        max-width: 90%;
+    }
+}
