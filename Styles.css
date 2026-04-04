@@ -541,8 +541,8 @@ h1, h2 {
     .nav-menu {
         position: fixed;
         left: -100%;
-        top: 70px;
-        background-color: var(--nav-bg);
+        top: 60px;
+        background-color: rgb(255, 255, 255);
         width: 100%;
         height: auto;
         padding-bottom: 20px;
