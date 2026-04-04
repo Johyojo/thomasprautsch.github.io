@@ -182,7 +182,7 @@ h1, h2 {
 .work-img-container {
     width: 100%;
     overflow: hidden;
-    border-radius: 12px; /* Deine gewünschten abgerundeten Ecken */
+    border-radius: 12px; /*abgerundete Ecken */
 }
 
 .gallery-img {
@@ -227,7 +227,7 @@ h1, h2 {
     max-width: 400px;
     aspect-ratio: 4 / 5;
     object-fit: cover;
-    object-position: 47% 50%; /* Deine X-Korrektur */
+    object-position: 47% 50%; /* X-Y-Korrektur */
     border-radius: 12px;
     box-shadow: 0 10px 20px rgba(0,0,0,0.1);
 }
@@ -256,20 +256,104 @@ h1, h2 {
     transform: translateY(-3px);
 }
 
-/* --- 8. LIGHTBOX (Mit Navigation & Pfeilen) --- */
-.lightbox {
-    display: none;
-    position: fixed;
-    z-index: 3000;
-    left: 0; top: 0; width: 100%; height: 100%;
-    background-color: rgba(0, 0, 0, 0.95);
+/* Der "Alle Anzeigen"-Button mit additiven, fröhlichen Übergängen */
+/* --- OPTIMIERTE & GEFIXTE LIGHTBOX-TASTE --- */
+.bottom-nav .btn-group .contact-btn:first-child {
+    /* WICHTIG: Erlaubt uns, das Bild absolut zu positionieren */
+    position: relative; 
+    
+    /* Stell sicher, dass der Button dieselben Ränder hat wie die anderen */
+    border: 1px solid #ccc;
+    color: inherit;
+    transition: all 0.3s ease;
+    
+    /* Stell sicher, dass der Button auch wirklich einen border-radius hat */
+    border-radius: 8px; /* Oder den Wert, den du global nutzt */
+    
+    /* 1. DER HAUPT-FIX: Verhindert, dass Farben an den Ecken durchscheinen */
+    overflow: hidden; 
+}
+
+/* Hover-Effekt: Der Hintergrund-Gradient wird als Pseudo-Element eingefügt */
+/* --- FIX: EINHEITLICHE HÖHE & SAUBERER RAND --- */
+.bottom-nav .btn-group .contact-btn:first-child {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    
+    /* Diese Zeilen erzwingen die exakt gleiche Höhe wie bei den anderen Buttons */
+    display: inline-flex;
     align-items: center;
     justify-content: center;
+    vertical-align: middle;
+    height: 45px; /* Passe diesen Wert an die Höhe deiner anderen Buttons an */
+    box-sizing: border-box; /* WICHTIG: Padding wird in die Höhe eingerechnet */
+    
+    padding: 0 20px;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s ease;
+    z-index: 1;
+}
+
+/* Der Hover-Effekt (bleibt fast gleich, aber sauberer positioniert) */
+.bottom-nav .btn-group .contact-btn:first-child:hover::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: conic-gradient(
+        from 0deg,
+        #ff0000, #ffff00, #00ff00, #00ffff, #0000ff, #ff00ff, #ff0000
+    );
+    animation: rotateGradient 3s linear infinite; /* Optional: kleine Drehung */
+}
+
+.bottom-nav .btn-group .contact-btn:first-child:hover {
+    color: white;
+    border-color: transparent;
+    transform: translateY(-2px);
+}
+
+/* Falls du die Drehung willst, hier die Animation: */
+@keyframes rotateGradient {
+    from { filter: hue-rotate(0deg); }
+    to { filter: hue-rotate(360deg); }
+}
+
+/* --- 8. LIGHTBOX (Mit Navigation & Pfeilen) --- */
+/* --- OPTIMIERTE LIGHTBOX --- */
+.lightbox {
+    display: none; /* Wird per JS auf 'flex' gesetzt */
+    position: fixed;
+    z-index: 3000;
+    left: 0; 
+    top: 0; 
+    width: 100%; 
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.95);
+    /* Flexbox sorgt für die Zentrierung des Inhalts */
+    align-items: center;
+    justify-content: center;
+    flex-direction: column; /* Stapelt Bild und Caption sauber */
 }
 
 .lightbox-content {
-    max-width: 80%;
-    max-height: 80%;
+    /* ERZWINGT GRÖSSE: Das Bild nutzt 90% der Breite oder 80% der Höhe */
+    width: 90vw; 
+    height: 80vh; 
+    
+    /* WICHTIG: Zieht das Bild groß, aber behält die Proportionen bei (keine Verzerrung) */
+    object-fit: contain; 
+    
+    /* Entfernt die Limitierung auf die Original-Pixelgröße */
+    max-width: 95%;
+    max-height: 85%;
+    
     animation: zoom 0.3s ease;
 }
 
@@ -279,8 +363,18 @@ h1, h2 {
 }
 
 .close {
-    position: absolute; top: 30px; right: 50px;
-    color: white; font-size: 50px; cursor: pointer;
+    position: absolute; 
+    top: 20px; 
+    right: 30px;
+    color: white; 
+    font-size: 40px; 
+    cursor: pointer;
+    z-index: 3010;
+    transition: transform 0.2s;
+}
+
+.close:hover {
+    transform: scale(1.1);
 }
 
 .prev, .next {
@@ -292,19 +386,31 @@ h1, h2 {
     padding: 20px;
     cursor: pointer;
     user-select: none;
-    transition: color 0.3s;
+    z-index: 3010;
+    transition: color 0.3s, transform 0.2s;
 }
 
-.prev { left: 20px; }
-.next { right: 20px; }
+.prev { left: 10px; }
+.next { right: 10px; }
 
-.prev:hover, .next:hover { color: var(--accent-color); }
+.prev:hover, .next:hover { 
+    color: var(--accent-color); 
+    transform: translateY(-50%) scale(1.1);
+}
 
 #caption {
-    position: absolute;
-    bottom: 40px;
+    margin-top: 20px; /* Abstand zum Bild oben */
     color: #ccc;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
+    text-align: center;
+    max-width: 80%;
+}
+
+/* Optimierung für Mobilgeräte: Pfeile etwas kleiner */
+@media (max-width: 600px) {
+    .prev, .next { font-size: 35px; padding: 10px; }
+    .close { right: 20px; top: 10px; }
+    .lightbox-content { height: 70vh; } /* Mehr Platz für Text auf Handys */
 }
 
 /* --- 9. FOOTER --- */
