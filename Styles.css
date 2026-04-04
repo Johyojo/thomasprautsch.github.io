@@ -1,10 +1,12 @@
-/* --- 1. VARIABLEN & RESET --- */
+/* ==========================================================================
+   1. VARIABLEN & RESET
+   ========================================================================== */
 :root {
     --primary-color: #333;
     --bg-color: #fff;
     --bg-light: #f4f4f4;
     --text-color: #444;
-    --nav-bg: #ffffffa4;
+    --nav-bg: rgba(255, 255, 255, 0.64);
     --accent-color: #888;
 }
 
@@ -16,11 +18,44 @@
 
 html {
     scroll-behavior: smooth;
-    font-family: 'Helvetica Neue', Arial, sans-serif;
-    color: var(--text-color);
 }
 
-/* --- 2. HEADER & NAVIGATION --- */
+/* ==========================================================================
+   2. BASICS & TYPOGRAFIE
+   ========================================================================== */
+body {
+    font-family: "Roboto", 'Helvetica Neue', Arial, sans-serif;
+    color: var(--text-color);
+    line-height: 1.6;
+    font-weight: 200;
+    font-variation-settings: "wdth" 75;
+    -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 {
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    font-weight: 300;
+    font-variation-settings: "wdth" 75;
+}
+
+.section {
+    padding: 120px 5% 60px; /* Platz für fixierten Header */
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.bg-light {
+    background-color: var(--bg-light);
+}
+
+/* ==========================================================================
+   3. HEADER & NAVIGATION
+   ========================================================================== */
 .header {
     background-color: var(--nav-bg);
     backdrop-filter: blur(50px);
@@ -64,19 +99,8 @@ html {
 .nav-link:hover {
     color: var(--accent-color);
 }
-/* --- Wilkommen Seite --- */
-.welcome-image-container {
-    margin-top: 30px;
-    text-align: center;
-}
 
-.welcome-img {
-    max-width: 100%; /* Verhindert, dass das Bild breiter als der Bildschirm ist */
-    height: auto;
-    border-radius: 4px; /* Passt zu deinen Buttons */
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1); /* Eleganter Schatten */
-}
-/* --- BURGER MENÜ (Mobile) --- */
+/* Mobile Hamburger Menu */
 .hamburger {
     display: none;
     cursor: pointer;
@@ -91,27 +115,21 @@ html {
     background-color: var(--primary-color);
 }
 
-/* --- 4. SEKTIONEN & LAYOUT --- */
-.section {
-    padding: 120px 5% 60px; /* Padding oben erhöht wegen Fixed Header */
-    min-height: 100vh;
+/* ==========================================================================
+   4. STARTSEITE (HERO & KATEGORIEN)
+   ========================================================================== */
+.welcome-image-container {
+    margin-top: 30px;
+    text-align: center;
 }
 
-.bg-light {
-    background-color: var(--bg-light);
+.welcome-img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
 
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-h1, h2 {
-    color: var(--primary-color);
-    margin-bottom: 1.5rem;
-}
-
-/* --- 5. STARTSEITEN-GRID (Mit Blur & Overlay) --- */
 .category-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -160,42 +178,26 @@ h1, h2 {
     background-color: rgba(0, 0, 0, 0.6);
 }
 
-/* --- 6. KATEGORIE-SEITEN-GRID (Stadtansichten etc. - Ohne Blur) --- */
-/* --- Masonry Layout (Spalten unabhängig voneinander) --- */
+/* ==========================================================================
+   5. GALERIE & ARBEITEN (MASONRY LAYOUT)
+   ========================================================================== */
 .works-grid {
-    /* Definiert die Anzahl der Spalten */
     column-count: 3; 
-    /* Abstand zwischen den Spalten */
     column-gap: 30px; 
     width: 100%;
 }
 
 .work-item {
-    /* Wichtig: Verhindert, dass ein Element zwischen zwei Spalten zerrissen wird */
     break-inside: avoid; 
-    display: inline-block; /* Nötig für die korrekte Spaltenberechnung */
+    display: inline-block;
     width: 100%;
-    margin-bottom: 40px; /* Abstand nach unten zum nächsten Bild */
-}
-
-/* Anpassung für Tablets (2 Spalten) */
-@media (max-width: 900px) {
-    .works-grid {
-        column-count: 2;
-    }
-}
-
-/* Anpassung für Handys (1 Spalte) */
-@media (max-width: 600px) {
-    .works-grid {
-        column-count: 1;
-    }
+    margin-bottom: 40px;
 }
 
 .work-img-container {
     width: 100%;
     overflow: hidden;
-    border-radius: 12px; /*abgerundete Ecken */
+    border-radius: 12px;
 }
 
 .gallery-img {
@@ -207,7 +209,7 @@ h1, h2 {
 }
 
 .gallery-img:hover {
-    transform: scale(1.03); /* Dezenter Zoom ohne Unschärfe */
+    transform: scale(1.03);
 }
 
 .work-info {
@@ -217,7 +219,6 @@ h1, h2 {
 .work-info h3 {
     font-size: 1.1rem;
     margin-bottom: 5px;
-    color: var(--primary-color);
 }
 
 .work-info p {
@@ -225,18 +226,28 @@ h1, h2 {
     color: #666;
     font-style: italic;
 }
-/* --- Vita, Preise, Ausstellungen --- */
+
+/* Responsive Grid Adjustments */
+@media (max-width: 900px) {
+    .works-grid { column-count: 2; }
+}
+
+@media (max-width: 600px) {
+    .works-grid { column-count: 1; }
+}
+
+/* ==========================================================================
+   6. VITA, PREISE & AUSSTELLUNGEN
+   ========================================================================== */
 .vita-grid {
     display: grid;
-    /* Macht 2 Spalten auf dem PC. Auf kleinen Bildschirmen wird es automatisch 1 Spalte */
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 30px;
     margin-bottom: 40px;
 }
 
-/* Die abgerundeten Boxen */
 .info-box {
-    background-color: #f9f9f9; /* Helles Grau für Kontrast */
+    background-color: #f9f9f9;
     border: 1px solid #e0e0e0;
     border-radius: 12px;
     padding: 30px;
@@ -245,23 +256,18 @@ h1, h2 {
 }
 
 .info-box:hover {
-    transform: translateY(-5px); /* Kleiner Hover-Effekt für die Boxen */
+    transform: translateY(-5px);
 }
 
 .info-box h3 {
     margin-top: 0;
-    margin-bottom: 20px;
-    color: var(--primary-color);
     border-bottom: 2px solid var(--accent-color);
     padding-bottom: 10px;
     display: inline-block;
 }
 
-/* Listen ohne Standard-Punkte styling */
 .clean-list {
     list-style-type: none;
-    padding-left: 0;
-    margin: 0;
 }
 
 .clean-list li {
@@ -275,27 +281,22 @@ h1, h2 {
     color: #555;
 }
 
-/* --- AUSSTELLUNGEN AUFKLAPP-MENÜ --- */
+/* Akkordeon Styling */
 .ausstellungen-wrapper {
-    text-align: center; /* Zentriert den Button */
+    text-align: center;
     margin-top: 20px;
 }
 
 .ausstellungen-accordion {
-    text-align: left; /* Text innen bleibt linksbündig */
+    text-align: left;
     background-color: #fff;
     border-radius: 12px;
 }
 
-/* Versteckt das Standard-Dreieck des Browsers im Summary */
-.ausstellungen-accordion summary::-webkit-details-marker {
-    display: none;
-}
+.ausstellungen-accordion summary::-webkit-details-marker { display: none; }
 .ausstellungen-accordion summary {
-    list-style: none; /* Für Firefox etc. */
+    list-style: none;
     cursor: pointer;
-    /* Wir nutzen hier einfach deine .contact-btn Klasse im HTML, 
-       damit der Button exakt so aussieht wie deine anderen! */
 }
 
 .accordion-content {
@@ -304,12 +305,14 @@ h1, h2 {
     background-color: #f9f9f9;
     border: 1px solid #e0e0e0;
     border-radius: 12px;
-    max-height: 400px; /* Begrenzt die Höhe */
-    overflow-y: auto;  /* Macht die Liste scrollbar, wenn sie zu lang ist! */
+    max-height: 400px;
+    overflow-y: auto;
     box-shadow: inset 0 0 10px rgba(0,0,0,0.05);
 }
 
-/* --- 7. KONTAKT BEREICH --- */
+/* ==========================================================================
+   7. KONTAKT & BUTTONS
+   ========================================================================== */
 .contact-wrapper {
     display: flex;
     flex-wrap: wrap;
@@ -323,7 +326,7 @@ h1, h2 {
     max-width: 400px;
     aspect-ratio: 4 / 5;
     object-fit: cover;
-    object-position: 47% 50%; /* X-Y-Korrektur */
+    object-position: 47% 50%;
     border-radius: 12px;
     box-shadow: 0 10px 20px rgba(0,0,0,0.1);
 }
@@ -334,17 +337,15 @@ h1, h2 {
     gap: 15px;
 }
 
-/* --- NORMALER CONTACT-BTN (Angepasst an die Höhe des ersten Buttons) --- */
+/* Basis-Button Styling */
 .contact-btn {
-    display: inline-flex;         /* Gleicher Display-Typ */
-    align-items: center;          /* Text vertikal zentrieren */
-    justify-content: center;      /* Text horizontal zentrieren */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     vertical-align: middle;
-    
-    height: 45px;                 /* EXAKT dieselbe feste Höhe wie dein erster Button */
-    padding: 0 20px;              /* EXAKT dasselbe Padding */
-    box-sizing: border-box;       /* WICHTIG: Damit die 45px inkl. Border gelten */
-    
+    height: 45px;
+    padding: 0 20px;
+    box-sizing: border-box;
     background-color: white;
     color: var(--text-color);
     border: 1px solid #ccc;
@@ -353,120 +354,64 @@ h1, h2 {
     transition: all 0.3s ease;
     text-align: center;
     cursor: pointer;
-}
-
-/* Der normale Hover-Effekt für die anderen Buttons */
-.contact-btn:hover {
-    background-color: var(--primary-color);
-    color: white;
-    /* Der kleine Versatz nach oben, passend zum Regenbogen-Button */
-    transform: translateY(-2px); 
-}
-
-/* Der "Alle Anzeigen"-Button mit additiven, fröhlichen Übergängen */
-/* --- OPTIMIERTE & GEFIXTE LIGHTBOX-TASTE --- */
-.bottom-nav .btn-group .contact-btn:first-child {
-    /* WICHTIG: Erlaubt uns, das Bild absolut zu positionieren */
-    position: relative; 
-    
-    /* Stell sicher, dass der Button dieselben Ränder hat wie die anderen */
-    border: 1px solid #ccc;
-    color: inherit;
-    transition: all 0.3s ease;
-    
-    /* Stell sicher, dass der Button auch wirklich einen border-radius hat */
-    border-radius: 8px; /* Oder den Wert, den du global nutzt */
-    
-    /* 1. DER HAUPT-FIX: Verhindert, dass Farben an den Ecken durchscheinen */
-    overflow: hidden; 
-}
-
-/* Hover-Effekt: Der Hintergrund-Gradient wird als Pseudo-Element eingefügt */
-/* --- FIX: EINHEITLICHE HÖHE & SAUBERER RAND --- */
-.bottom-nav .btn-group .contact-btn:first-child {
     position: relative;
-    overflow: hidden;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-    
-    /* Diese Zeilen erzwingen die exakt gleiche Höhe wie bei den anderen Buttons */
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    vertical-align: middle;
-    height: 45px; /* Passe diesen Wert an die Höhe deiner anderen Buttons an */
-    box-sizing: border-box; /* WICHTIG: Padding wird in die Höhe eingerechnet */
-    
-    padding: 0 20px;
-    text-decoration: none;
-    color: inherit;
-    transition: all 0.3s ease;
     z-index: 1;
 }
 
-/* Der Hover-Effekt (bleibt fast gleich, aber sauberer positioniert) */
+.contact-btn:hover {
+    background-color: var(--primary-color);
+    color: white;
+    transform: translateY(-2px); 
+}
+
+/* Spezial-Button: Regenbogen-Effekt */
+.bottom-nav .btn-group .contact-btn:first-child {
+    overflow: hidden; 
+}
+
 .bottom-nav .btn-group .contact-btn:first-child:hover::before {
     content: "";
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    top: 0; left: 0; width: 100%; height: 100%;
     z-index: -1;
-    background: conic-gradient(
-        from 0deg,
-        #ff0000, #ffff00, #00ff00, #00ffff, #0000ff, #ff00ff, #ff0000
-    );
-    animation: rotateGradient 3s linear infinite; /* Optional: kleine Drehung */
+    background: conic-gradient(from 0deg, #ff0000be, #ffff00be, #00ff00be, #00ffffbe, #0000ffbe, #ff00ffbe, #ff0000be);
+    /*animation: rotateGradient 10s linear infinite;*/
+
 }
 
 .bottom-nav .btn-group .contact-btn:first-child:hover {
     color: white;
     border-color: transparent;
-    transform: translateY(-2px);
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    text-shadow: 2px 2px 3px rgb(0, 0, 0);
 }
 
-/* Falls du die Drehung willst, hier die Animation: */
 @keyframes rotateGradient {
     from { filter: hue-rotate(0deg); }
     to { filter: hue-rotate(360deg); }
 }
 
-/* --- 8. LIGHTBOX (Mit Navigation & Pfeilen) --- */
-/* --- OPTIMIERTE LIGHTBOX --- */
+/* ==========================================================================
+   8. LIGHTBOX
+   ========================================================================== */
 .lightbox {
-    display: none; /* Wird per JS auf 'flex' gesetzt */
+    display: none;
     position: fixed;
     z-index: 3000;
-    left: 0; 
-    top: 0; 
-    width: 100%; 
-    height: 100%;
-    background-color: rgb(255, 255, 255);
-
-/* 2. Der Blur-Effekt für alles, was hinter der Lightbox liegt */
+    left: 0; top: 0; width: 100%; height: 100%;
+    background-color: rgba(255, 255, 255, 0.8);
     backdrop-filter: blur(50px);
-    -webkit-backdrop-filter: blur(50px); /* Für Safari-Unterstützung */
-
-    /* Flexbox sorgt für die Zentrierung des Inhalts */
+    -webkit-backdrop-filter: blur(50px);
     align-items: center;
     justify-content: center;
-    flex-direction: column; /* Stapelt Bild und Caption sauber */
+    flex-direction: column;
 }
 
 .lightbox-content {
-    /* ERZWINGT GRÖSSE: Das Bild nutzt 90% der Breite oder 80% der Höhe */
     width: 90vw; 
     height: 80vh; 
-    
-    /* WICHTIG: Zieht das Bild groß, aber behält die Proportionen bei (keine Verzerrung) */
     object-fit: contain; 
-    
-    /* Entfernt die Limitierung auf die Original-Pixelgröße */
     max-width: 95%;
     max-height: 85%;
-    
     animation: zoom 0.3s ease;
 }
 
@@ -475,27 +420,38 @@ h1, h2 {
     to {transform: scale(1); opacity: 1;}
 }
 
-.close {
-    position: absolute; 
-    top: 20px; 
+/* Lightbox Controls */
+.close, .close-btn {
+    position: absolute;
+    top: 20px;
     right: 30px;
-    color: rgb(0, 0, 0); 
-    font-size: 40px; 
-    cursor: pointer;
     z-index: 3010;
-    transition: transform 0.2s;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
-.close:hover {
-    transform: scale(1.1);
+/* Das spezielle Plus-zu-Kreuz Design */
+.close-btn {
+    display: inline-block;
+    font-family: "Roboto", sans-serif;
+    font-weight: 100;
+    font-size: 40px;
+    color: rgba(0, 0, 0, 0.4);
+    line-height: 1;
+    user-select: none;
+}
+
+.close-btn:hover {
+    color: #000;
+    transform: rotate(180deg) scale(1.1); 
 }
 
 .prev, .next {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    color: rgb(0, 0, 0);
-    font-size: 50px;
+    color: rgba(0, 0, 0, 0.4);
+    font-size: 5rem;
     padding: 20px;
     cursor: pointer;
     user-select: none;
@@ -507,26 +463,21 @@ h1, h2 {
 .next { right: 10px; }
 
 .prev:hover, .next:hover { 
-    color: var(--accent-color); 
+    color: rgba(0, 0, 0, 1); 
     transform: translateY(-50%) scale(1.1);
 }
 
 #caption {
-    margin-top: 20px; /* Abstand zum Bild oben */
+    margin-top: 20px;
     color: #1b1b1b;
     font-size: 1.1rem;
     text-align: center;
     max-width: 80%;
 }
 
-/* Optimierung für Mobilgeräte: Pfeile etwas kleiner */
-@media (max-width: 600px) {
-    .prev, .next { font-size: 35px; padding: 10px; }
-    .close { right: 20px; top: 10px; }
-    .lightbox-content { height: 70vh; } /* Mehr Platz für Text auf Handys */
-}
-
-/* --- 9. FOOTER --- */
+/* ==========================================================================
+   9. FOOTER & GLOBAL MEDIA QUERIES
+   ========================================================================== */
 .footer {
     text-align: center;
     padding: 2rem;
@@ -534,7 +485,14 @@ h1, h2 {
     color: white;
 }
 
-/* --- 10. MEDIA QUERIES --- */
+/* Lightbox Mobile Adjustments */
+@media (max-width: 600px) {
+    .prev, .next { font-size: 35px; padding: 10px; }
+    .close-btn { right: 20px; top: 10px; font-size: 35px; }
+    .lightbox-content { height: 70vh; }
+}
+
+/* Navigation Mobile Menu */
 @media (max-width: 768px) {
     .hamburger { display: block; }
 
@@ -542,7 +500,7 @@ h1, h2 {
         position: fixed;
         left: -100%;
         top: 60px;
-        background-color: rgb(255, 255, 255);
+        background-color: #fff;
         width: 100%;
         height: auto;
         padding-bottom: 20px;
@@ -551,13 +509,11 @@ h1, h2 {
     }
 
     .nav-menu.active { left: 0; }
-    
     .nav-list { flex-direction: column; text-align: center; }
     .nav-item { margin: 1.5rem 0; }
 
+    /* Burger to Cross Animation */
     .hamburger.active .bar:nth-child(2) { opacity: 0; }
     .hamburger.active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
     .hamburger.active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
-    
-    .prev, .next { font-size: 30px; }
 }
