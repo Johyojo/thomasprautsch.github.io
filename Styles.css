@@ -501,6 +501,15 @@ h1, h2, h3 {
     font-size: 0.8rem;
     padding: 0 15px;
     min-width: 80px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-left: auto;  /* Abstand zum linken Rand */
+    margin-right: 10px; /* Schiebt alles andere nach rechts weg */
+    
+    /* Falls er in einem Flex-Container steckt, verhindert dies das Strecken: */
+    align-self: flex-start;
 }
 
 
