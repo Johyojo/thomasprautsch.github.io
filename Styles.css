@@ -157,7 +157,7 @@ h1, h2, h3 {
 }
 
 /* ==========================================================================
-   4. STARTSEITE (HERO & KATEGORIEN)
+   4. STARTSEITE (HERO, KARUSELL & KATEGORIEN)
    ========================================================================== */
 .welcome-image-container {
     margin-top: 30px;
@@ -219,6 +219,50 @@ h1, h2, h3 {
     background-color: rgba(0, 0, 0, 0.6);
 }
 
+/* 1. Der äußere Rahmen (Sichtfenster) */
+.marquee-container {
+  width: 100%;
+  overflow: hidden; /* Schneidet alles ab, was rechts rausragt */
+  background: white;
+  padding: 0px 0;
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+/* 2. Das endlose Band */
+.marquee-track {
+  display: flex;
+  width: max-content; /* Macht das Band genau so lang wie alle Bilder zusammen */
+  animation: scroll 60s linear infinite; /* Geschwindigkeit hier anpassen */
+}
+
+/* 3. Die Bilder im Band */
+.marquee-track img {
+  height: 200px; /* Einheitliche Höhe für alle Bilder */
+  width: auto;   /* Breite passt sich proportional an */
+  margin: 0 15px; /* Abstand zwischen den Bildern */
+  border-radius: 8px;
+  /* Verhindert das Flackern bei der Animation */
+  backface-visibility: hidden; 
+}
+
+/* 4. Die magische Animation */
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    /* Schiebt das Band genau um 50% nach links. 
+       Da die zweite Hälfte eine Kopie der ersten ist, 
+       sieht man den Sprung zurück auf 0% nicht. */
+    transform: translateX(-50%);
+  }
+}
+
+/* 5. Interaktion: Pause beim Hovern */
+.marquee-container:hover .marquee-track {
+  animation-play-state: paused;
+}
 /* ==========================================================================
    5. GALERIE & ARBEITEN (MASONRY LAYOUT)
    ========================================================================== */
@@ -730,7 +774,7 @@ h1, h2, h3 {
     height: 56px; 
     border-radius: 1rem; 
     position: relative;
-    color: rgb(255, 255, 255);
+    color: black;
     font-size: 1.1rem;
     font-weight: 600;
     display: flex;
